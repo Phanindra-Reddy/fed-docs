@@ -1,11 +1,7 @@
 import React from "react";
 import DashboardSideNav from "../../components/DashboardSideNav";
 import HeadComp from "../../components/HeadComp";
-import HorizontalFlow from "../../components/ReacrFlowRenderer";
-import {
-  initialNodes,
-  initialEdges,
-} from "../../react-flow-data/react-ecosystem/reactEcoData";
+
 
 const ReactEcosystemRoadmap = () => {
   return (
@@ -26,10 +22,7 @@ const ReactEcosystemRoadmap = () => {
           </div>
 
           <div className="flex items-end justify-evenly flex-wrap">
-          <HorizontalFlow
-              initialNodes={initialNodes}
-              initialEdges={initialEdges}
-            />
+         React Ecosystem Roadmap 
           </div>
         </div>
       </div>
