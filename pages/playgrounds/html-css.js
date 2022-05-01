@@ -7,13 +7,41 @@ import { BiMinus } from "react-icons/bi";
 import ScreenSizeModel from "../../components/ScreenSizeModel";
 import useLocalStorage from "../../hooks/useLocalStorage";
 
+const sampleHtml = `
+<h1>Welcome To</h1>
+<h1>FED Docs</h1>
+<h1>Playgrounds</h1>
 
+<p>Happy coding :)</p>
+<span>chnange the code to see the output</span>
+`;
+
+const sampleCss = `
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Cookie&family=Dancing+Script:wght@500&family=EB+Garamond:ital,wght@1,500&family=Satisfy&display=swap');
+
+body{
+    background-color: #03203C;
+    color: white;
+    font-size: larger;
+    text-align: center;
+    font-family: 'Comfortaa', cursive;
+}
+
+p{
+    color: blueviolet;
+    font-size: larger;
+}
+
+span{
+    font-size: small;
+}
+`;
 
 function HtmlCss() {
   const [collapsedIndex, setCollapsedIndex] = useState(null);
   const [srcDoc, setSrcDoc] = useState("");
-  const [html, setHtml] = useLocalStorage("html", "");
-  const [css, setCss] = useLocalStorage("css", "");
+  const [html, setHtml] = useLocalStorage("html", sampleHtml);
+  const [css, setCss] = useLocalStorage("css", sampleCss);
 
   useEffect(() => {
     const time = setTimeout(() => {
@@ -45,7 +73,7 @@ function HtmlCss() {
               value={html}
               onValueChange={setHtml}
               language="html"
-              height="100vh" 
+              height="100vh"
             />
           </span>
           <span>
@@ -55,7 +83,8 @@ function HtmlCss() {
               value={css}
               onValueChange={setCss}
               language="css"
-              height="100vh" />
+              height="100vh"
+            />
           </span>
           <div>
             <span className="font-medium bg-gray-300">Browser</span>
