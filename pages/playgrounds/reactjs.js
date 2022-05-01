@@ -1,8 +1,8 @@
 import React from "react";
 import HeadComp from "../../components/HeadComp";
 import ScreenSizeModel from "../../components/ScreenSizeModel";
-import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
-import Split from "react-split";
+// import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
+// import Split from "react-split";
 import useLocalStorage from "../../hooks/useLocalStorage";
 
 const code = `
@@ -33,7 +33,7 @@ const ReactPlayground = () => {
     <>
       <HeadComp title="FED Docs" description="JavaScript Playground" />
       <ScreenSizeModel />
-      <div className="h-screen flex flex-col overflow-hidden">
+      <div className="min-h-screen flex flex-col overflow-hidden dark:bg-gray-900">
         {
           toastAlert && (
             <div className="flex justify-between items-center p-1 my-2 mx-2 border border-blue-700 bg-blue-200">
@@ -42,7 +42,7 @@ const ReactPlayground = () => {
             </div>
           )
         }
-        <Split className="split">
+        {/* <Split className="split">
           <LiveProvider code={code} className="bg-blue-600">
             <div className="min-h-screen">
               <LiveEditor />
@@ -52,7 +52,11 @@ const ReactPlayground = () => {
               <LivePreview />
             </Split>
           </LiveProvider>
-        </Split>
+        </Split> */}
+        <div className="flex flex-col items-center justify-center dark:text-white">
+          <span className="mt-48 text-5xl">Coming Soon...</span>
+          <span className="mt-5">STAY TUNED😊</span>
+        </div>
       </div>
     </>
   );
