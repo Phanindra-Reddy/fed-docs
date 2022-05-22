@@ -26,18 +26,31 @@ function classNames(...classes) {
 }
 
 function MyLink(props) {
-  let { href, children, active, ...rest } = props;
+  let { href, children, active, nextTab, ...rest } = props;
   return (
     <Link href={href}>
-      <a
-        {...rest}
-        className={classNames(
-          active ? "bg-violet-500 text-white" : "text-gray-900",
-          "hover:bg-violet-500 hover:text-white rounded-md mx-1 block px-4 py-2 text-sm md:text-lg"
-        )}
-      >
-        {children}
-      </a>
+      {nextTab ? (
+        <a
+          {...rest}
+          className={classNames(
+            active ? "bg-violet-500 text-white" : "text-gray-900",
+            "hover:bg-violet-500 hover:text-white rounded-md mx-1 block px-4 py-2 text-sm md:text-lg"
+          )}
+          target="_blank"
+        >
+          {children}
+        </a>
+      ) : (
+        <a
+          {...rest}
+          className={classNames(
+            active ? "bg-violet-500 text-white" : "text-gray-900",
+            "hover:bg-violet-500 hover:text-white rounded-md mx-1 block px-4 py-2 text-sm md:text-lg"
+          )}
+        >
+          {children}
+        </a>
+      )}
     </Link>
   );
 }
@@ -77,16 +90,30 @@ function Navbar({ darkTheme, setDarkTheme }) {
           </button> */}
 
           <div className="mr-5 hidden md:block">
+            <Link href="https://fed-docs-ide.netlify.app/">
+              <a
+                className="text-white font-medium text-lg mr-3 hover:underline"
+                target="_blank"
+              >
+                IDE
+              </a>
+            </Link>
             <Link href="/playgrounds">
-              <a className="text-white font-medium text-lg mr-3 hover:underline">Playgrounds</a>
+              <a className="text-white font-medium text-lg mr-3 hover:underline">
+                Playgrounds
+              </a>
             </Link>
 
             <Link href="/learning-paths">
-              <a className="text-white font-medium text-lg mr-3 hover:underline">Learning Paths</a>
+              <a className="text-white font-medium text-lg mr-3 hover:underline">
+                Learning Paths
+              </a>
             </Link>
 
             <Link href="/projects">
-              <a className="text-white font-medium text-lg mr-3 hover:underline">Projects</a>
+              <a className="text-white font-medium text-lg mr-3 hover:underline">
+                Projects
+              </a>
             </Link>
           </div>
 
@@ -158,6 +185,17 @@ function Navbar({ darkTheme, setDarkTheme }) {
                   </Menu.Item>
                 </div> */}
                 <div className="py-1">
+                  <Menu.Item>
+                    {({ active }) => (
+                      <MyLink
+                        href="https://fed-docs-ide.netlify.app/"
+                        active={active}
+                        nextTab="true"
+                      >
+                        IDE
+                      </MyLink>
+                    )}
+                  </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
                       <MyLink href="/playgrounds" active={active}>
